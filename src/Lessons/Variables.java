@@ -13,11 +13,9 @@ public class Variables {
 		String myString = "This is a string!";
 
 		// Constant variables
-		double TAX_RATE = 0.13;
-		double MIN_WAGE = 14.60;
+		final double TAX_RATE = 0.15;
+		final double MIN_WAGE = 14.60;
 		
-		
-		TAX_RATE = 999.99;
 		
 		System.out.println(TAX_RATE);
 		
