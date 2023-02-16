@@ -31,7 +31,7 @@ public class IncomeTaxBonus {
 			}
 		}
 		
-		//provTax = provincialTax(salary);
+		provTax = provincialTax(salary);
 		//fedTax = federalTax(salary);
 		
 		System.out.println("Provincial Tax: " + provTax);
@@ -51,27 +51,36 @@ public class IncomeTaxBonus {
 		
 		if (s > 235675)  {
 		
-			// code
+			tax = (s - 235675) * PROV_BRACKET_5
+					+ (235675 - 165430) * PROV_BRACKET_4
+					+ (165430 - 106717) * PROV_BRACKET_3
+					+ (106717 - 53359) * PROV_BRACKET_2
+					+ 53359 * PROV_BRACKET_1;
 		}
 		
-		else if ( (s > 165430)  && (s < 235675) )  {
+		else if ( (s > 165430) && (s <= 235675) )  {
 			
-			// code
+			tax = (s - 165430) * PROV_BRACKET_4
+					+ (165430 - 106717) * PROV_BRACKET_3
+					+ (106717 - 53359) * PROV_BRACKET_2
+					+ 53359 * PROV_BRACKET_1;
 		}
 		
-		else if ( (s > 106717)  && (s < 165430) )  {
+		else if ( (s > 106717) && (s <= 165430) )  {
 			
-			// code
+			tax = (s - 106717) * PROV_BRACKET_3
+					+ (106717 - 53359) * PROV_BRACKET_2
+					+ 53359 * PROV_BRACKET_1;
 		}
 		
-		else if ( (s > 53359)  && (s < 106717) )  {
+		else if ( (s > 53359) && (s <= 106717) )  {
 			
-			// code
+			tax = (s - 53359) * PROV_BRACKET_2
+					+ 53359 * PROV_BRACKET_1;
 		}
 		
 		else  {  
-			
-			// code 
+			tax = (53359 - s) * PROV_BRACKET_1;
 		}
 		
 		return tax;
@@ -93,20 +102,17 @@ public class IncomeTaxBonus {
 		}
 		
 		
-		
-		// HERE
-		
-		else if ( (s > 165430)  && (s < 235675) )  {
+		else if ( (s > 150000) && (s <= 220000) )  {
 			
 			// code
 		}
 		
-		else if ( (s > 106717)  && (s < 165430) )  {
+		else if ( (s > 98463) && (s <= 150000) )  {
 			
 			// code
 		}
 		
-		else if ( (s > 53359)  && (s < 106717) )  {
+		else if ( (s > 49231) && (s <= 98463) )  {
 			
 			// code
 		}
