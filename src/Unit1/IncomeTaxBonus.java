@@ -10,6 +10,7 @@ public class IncomeTaxBonus {
 		double salary = 0;
 		double provTax = 0;
 		double fedTax = 0;
+		double totalTax = 0;
 		boolean validEntry = false;
 		Scanner sc = new Scanner(System.in);
 		
@@ -22,6 +23,7 @@ public class IncomeTaxBonus {
 			
 			try {
 				salary = sc.nextDouble();
+				validEntry = true;
 			}
 			
 			catch (Exception e)  {
@@ -32,10 +34,12 @@ public class IncomeTaxBonus {
 		}
 		
 		provTax = provincialTax(salary);
-		//fedTax = federalTax(salary);
+		fedTax = federalTax(salary);
+		totalTax = provTax + fedTax;
 		
-		System.out.println("Provincial Tax: " + provTax);
-		System.out.println("Federal Tax: " + fedTax);
+		System.out.println("\nProvincial Tax: $" + provTax);
+		System.out.println("Federal Tax: $" + fedTax);
+		System.out.println("Total Income Tax: $" + totalTax);
 	}	
 	
 	
@@ -80,8 +84,13 @@ public class IncomeTaxBonus {
 		}
 		
 		else  {  
-			tax = (53359 - s) * PROV_BRACKET_1;
+			tax = s * PROV_BRACKET_1;
 		}
+		
+		// Round to penny
+		tax = tax * 100;
+		tax = Math.round(tax);
+		tax = tax/100;
 		
 		return tax;
 	}
@@ -98,30 +107,44 @@ public class IncomeTaxBonus {
 		
 		if (s > 220000)  {
 			
-			// code
+			tax = (s - 220000) * FED_BRACKET_5
+					+ (220000 - 150000) * FED_BRACKET_4
+					+ (150000 - 98463) * FED_BRACKET_3
+					+ (98463 - 49231) * FED_BRACKET_2
+					+ 49231 * FED_BRACKET_1;
 		}
 		
 		
 		else if ( (s > 150000) && (s <= 220000) )  {
 			
-			// code
+			tax = (s - 150000) * FED_BRACKET_4
+					+ (150000 - 98463) * FED_BRACKET_3
+					+ (98463 - 49231) * FED_BRACKET_2
+					+ 49231 * FED_BRACKET_1;
 		}
 		
 		else if ( (s > 98463) && (s <= 150000) )  {
 			
-			// code
+			tax = (s - 98463) * FED_BRACKET_3
+					+ (98463 - 49231) * FED_BRACKET_2
+					+ 49231 * FED_BRACKET_1;
 		}
 		
 		else if ( (s > 49231) && (s <= 98463) )  {
 			
-			// code
+			tax = (s - 49231) * FED_BRACKET_2
+					+ 49231 * FED_BRACKET_1;
 		}
 		
 		else  {  
 			
-			// code 
+			tax = s * FED_BRACKET_1;
 		}
 		
+		// Round to penny
+		tax = tax * 100;
+		tax = Math.round(tax);
+		tax = tax/100;
 		
 		return tax;
 	}
