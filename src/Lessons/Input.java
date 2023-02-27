@@ -2,7 +2,7 @@ package Lessons;
 
 import java.util.Scanner;
 
-public class InputP2 {
+public class Input {
 
 	public static void main(String[] args) {
 
