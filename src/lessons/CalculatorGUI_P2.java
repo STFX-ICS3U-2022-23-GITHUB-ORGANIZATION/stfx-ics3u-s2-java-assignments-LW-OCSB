@@ -1,4 +1,4 @@
-package Lessons;
+package lessons;
 
 import java.awt.EventQueue;
 
@@ -7,8 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class CalculatorGUI_P4 {
+public class CalculatorGUI_P2 {
 
 	private JFrame frame;
 	private JTextField textField1;
@@ -22,7 +24,7 @@ public class CalculatorGUI_P4 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CalculatorGUI_P4 window = new CalculatorGUI_P4();
+					CalculatorGUI_P2 window = new CalculatorGUI_P2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +36,7 @@ public class CalculatorGUI_P4 {
 	/**
 	 * Create the application.
 	 */
-	public CalculatorGUI_P4() {
+	public CalculatorGUI_P2() {
 		initialize();
 	}
 
@@ -53,6 +55,24 @@ public class CalculatorGUI_P4 {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton button1 = new JButton("Add");
+		button1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// button1 code goes here
+				
+				int num1 = 0;
+				int num2 = 0;
+				int answer = 0;
+				
+				num1 = Integer.parseInt(textField1.getText());
+				num2 = Integer.parseInt(textField2.getText());
+				answer = num1 + num2;
+				
+				textField3.setText(Integer.toString(answer));
+				
+				
+				
+			}
+		});
 		button1.setBounds(35, 43, 89, 23);
 		frame.getContentPane().add(button1);
 		
@@ -69,10 +89,28 @@ public class CalculatorGUI_P4 {
 		frame.getContentPane().add(button4);
 		
 		JButton button5 = new JButton("Clear");
+		button5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Clear Button Code
+				textField1.setText("");
+				textField2.setText("");
+				textField3.setText("");
+			}
+		});
 		button5.setBounds(35, 179, 89, 23);
 		frame.getContentPane().add(button5);
 		
 		JButton button6 = new JButton("Exit");
+		button6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				// Exit code
+				
+				System.exit(0);
+				
+			}
+		});
 		button6.setBounds(35, 213, 89, 23);
 		frame.getContentPane().add(button6);
 		
